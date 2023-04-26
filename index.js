@@ -25,7 +25,7 @@ inquirer
     {
       type: 'input',
       message: 'What is your project title?',
-      name: 'title',
+      name: 'Title',
     },
     {
       type: 'input',
@@ -58,6 +58,16 @@ inquirer
       choices: ['MIT License', 'GNU AGPLv3', 'GNU GPLv3', 'GNU LGPLv3', 'Mozilla Public License 2.0', 'Apache License 2.0', 'Boost Software License 1.0', 'The Unlicense',],
       name: 'license',
     },
+    {
+      type: 'input',
+      message: 'What is your GitHub username?',
+      name: 'githubUsername',
+    },
+    {
+      type: 'input',
+      message: 'What is your email address?',
+      name: 'email',
+    },
 
   ])
   .then((response) => {
@@ -66,7 +76,7 @@ inquirer
       ? console.log('You forgot to answer a question')
       : console.log('You answered all the questions successfully!')
 
-    fs.writeFile('README.txt', JSON.stringify(response, null, '\t'), (err) =>
+    fs.writeFile('readmeOutput.md', JSON.stringify(response, null, '\t'), (err) =>
       err ? console.error(err) : console.log('Success!')
     );
   });
@@ -75,56 +85,72 @@ inquirer
 function writeToFile(fileName, data) {
 
 
-  // creating badge and adding it to README
-  let badge = inquirer.prompt[6].name
+  // creating badge and appending it to the README
+  let badge = inquirer.prompt[6].name;
+  let licenseText = `This project is subject to the protections of the ${license}.`;
 
   if (badge === 'MIT License') {
     let badgeDisplay = '![badge](https://img.shields.io/npm/l/license)';
     title.append(badgeDisplay);
+    license.append(licenseText);
   } if (badge === 'GNU AGPLv3') {
     let badgeDisplay = '![badge](https://img.shields.io/badge/license-GNU%20AGPLv3-green)';
     title.append(badgeDisplay);
+    license.append(licenseText);
   } if (badge === 'GNU GPLv3') {
     let badgeDisplay = '![badge](https://img.shields.io/badge/license-GNU%20GPLv3-green)';
     title.append(badgeDisplay);
-
+    license.append(licenseText);
   } if (badge === 'GNU LGPLv3') {
     let badgeDisplay = '![badge](https://img.shields.io/badge/license-GNU%2020LGPLv3-green)';
     title.append(badgeDisplay);
-
+    license.append(licenseText);
   } if (badge === 'Mozilla Public License 2.0') {
     let badgeDisplay = '![badge](https://img.shields.io/badge/license-Mozilla%20Public%20License%202.0-green)';
     title.append(badgeDisplay);
-
+    license.append(licenseText);
   } if (badge === 'Boost Software License 1.0') {
     let badgeDisplay = '![badge](https://img.shields.io/badge/license-Boost%20Software%20License%201.0-green';
     title.append(badgeDisplay);
+    license.append(licenseText);
   } if (badge === 'The Unlicense') {
     let badgeDisplay = '![badge](https://img.shields.io/badge/license-The%20Unlicense-green';
     title.append(badgeDisplay);
+    license.append(licenseText);
+  };
+
+  // creating github profile link from github username and appending it to the Questions section
+  var githubLink = `![GitHub Profile](https://github.com/${username})`;
+  questions.append(githubLink);
+
+  // adding email address link to Question section
+  var email = `![Contact Me](mailto:${email})`;
+  var contactMe = `Feel free to email me with any questions about how to use this application.`
+  questions.append(email);
+  questions.append(contactMe);
 
 
 
 
 
 
-    // User inputs: 
-    // title input - needs to go to top of page
-    // description, installation instructions, usage information, contribution guidelines, and test instructions inputs -- need to be added to the Description, Installation, Usage, Contributing, and Tests sections
-    // license options inputs: Checkbox?
-    // license badge needs to be added to top of page
-    // license description needs to be added to license section
-    // GitHub username input -- needs to be added to the Questions section with link to GitHub profile
-    // `https://github.com/${username}`
-    // email address input -- needs to be added to Questions section with instructions on how to reach me with additional questions
+  // User inputs: 
+  // title input - needs to go to top of page
+  // description, installation instructions, usage information, contribution guidelines, and test instructions inputs -- need to be added to the Description, Installation, Usage, Contributing, and Tests sections
+  // license options inputs
+  // license badge needs to be added to top of page
+  // license description needs to be added to license section
+  // GitHub username input -- needs to be added to the Questions section with link to GitHub profile
+  // `https://github.com/${username}`
+  // email address input -- needs to be added to Questions section with instructions on how to reach me with additional questions
 
-    // Table of contents need to link to corresponding sections
+  // Table of contents need to link to corresponding sections
 
 
-  }
+}
 
-  // TODO: Create a function to initialize app
-  function init() { }
+// TODO: Create a function to initialize app
+function init() { }
 
-  // Function call to initialize app
-  init();
+// Function call to initialize app
+init();

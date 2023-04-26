@@ -1,3 +1,18 @@
-# Professional README Generator Starter Code
+# Professional-README-Generator
 
-[How to create a Professional README](https://coding-boot-camp.github.io/full-stack/github/professional-readme-guide)
+## Description
+
+Link to live page: 
+
+## Installation
+N/A
+
+## Usage
+
+## Credits 
+- [LinuxHint](https://linuxhint.com/markdown-table-contents/) for how to do a table of contents
+
+## License
+MIT License
+
+
