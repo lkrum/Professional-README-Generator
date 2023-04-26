@@ -15,142 +15,113 @@
 // THEN I am taken to the corresponding section of the README
 
 
-// TODO: Include packages needed for this application
+// packages needed for this application
 const inquirer = require('inquirer');
 const fs = require('fs');
 
-// TODO: Create an array of questions for user input
-inquirer
-  .prompt([
-    {
-      type: 'input',
-      message: 'What is your project title?',
-      name: 'Title',
-    },
-    {
-      type: 'input',
-      message: 'What is your project description?',
-      name: 'description',
-    },
-    {
-      type: 'input',
-      message: 'What are the installation instructions?',
-      name: 'installInstructions',
-    },
-    {
-      type: 'input',
-      message: 'What is the usage information?"',
-      name: 'usageInfo',
-    },
-    {
-      type: 'input',
-      message: 'What are the contribution guidelines?',
-      name: 'contributeGuide',
-    },
-    {
-      type: 'input',
-      message: 'What are the test instructions?',
-      name: 'testInstruct',
-    },
-    {
-      type: 'rawlist',
-      message: 'Which license do you need?',
-      choices: ['MIT License', 'GNU AGPLv3', 'GNU GPLv3', 'GNU LGPLv3', 'Mozilla Public License 2.0', 'Apache License 2.0', 'Boost Software License 1.0', 'The Unlicense',],
-      name: 'license',
-    },
-    {
-      type: 'input',
-      message: 'What is your GitHub username?',
-      name: 'githubUsername',
-    },
-    {
-      type: 'input',
-      message: 'What is your email address?',
-      name: 'email',
-    },
+//  // function to create badge based on license selection
+//   function badgeIcon(license) {
+//     var badges = {
+//       MIT: '[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)',
+//       GNUAGPLv3: '[![License: AGPL v3](https://img.shields.io/badge/License-AGPL_v3-blue.svg)](https://www.gnu.org/licenses/agpl-3.0)',
+//       GNUGPLv3: '[![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)',
+//       GNULGPLv3: '[![License: LGPL v3](https://img.shields.io/badge/License-LGPL_v3-blue.svg)](https://www.gnu.org/licenses/lgpl-3.0)',
+//       Mozilla: '[![License: MPL 2.0](https://img.shields.io/badge/License-MPL_2.0-brightgreen.svg)](https://opensource.org/licenses/MPL-2.0)',
+//       Boost: '[![License](https://img.shields.io/badge/License-Boost_1.0-lightblue.svg)](https://www.boost.org/LICENSE_1_0.txt)',
+//     }
+//       return badges[license];
+//   }
 
-  ])
-  .then((response) => {
-    console.log(response)
-    response === null
-      ? console.log('You forgot to answer a question')
-      : console.log('You answered all the questions successfully!')
+// function to write README file
+const writeToFile = ({ description, installInstructions, usageInfo, license, contributeGuide, testInstruct, githubUsername, email }) =>
+  ` ## Title 
 
-    fs.writeFile('readmeOutput.md', JSON.stringify(response, null, '\t'), (err) =>
-      err ? console.error(err) : console.log('Success!')
-    );
-  });
+    # Table of Contents
+    1. [Description](#description)
+    2. [Installation](#installation)
+    3. [Usage](#usage)
+    4. [License](#license)
+    5. [Contributing](#contributing)
+    6. [Tests](#tests)
+    7. [Questions](#questions)
 
-// TODO: Create a function to write README file
-function writeToFile(fileName, data) {
-
-
-  // creating badge and appending it to the README
-  let badge = inquirer.prompt[6].name;
-  let licenseText = `This project is subject to the protections of the ${license}.`;
-
-  if (badge === 'MIT License') {
-    let badgeDisplay = '![badge](https://img.shields.io/npm/l/license)';
-    title.append(badgeDisplay);
-    license.append(licenseText);
-  } if (badge === 'GNU AGPLv3') {
-    let badgeDisplay = '![badge](https://img.shields.io/badge/license-GNU%20AGPLv3-green)';
-    title.append(badgeDisplay);
-    license.append(licenseText);
-  } if (badge === 'GNU GPLv3') {
-    let badgeDisplay = '![badge](https://img.shields.io/badge/license-GNU%20GPLv3-green)';
-    title.append(badgeDisplay);
-    license.append(licenseText);
-  } if (badge === 'GNU LGPLv3') {
-    let badgeDisplay = '![badge](https://img.shields.io/badge/license-GNU%2020LGPLv3-green)';
-    title.append(badgeDisplay);
-    license.append(licenseText);
-  } if (badge === 'Mozilla Public License 2.0') {
-    let badgeDisplay = '![badge](https://img.shields.io/badge/license-Mozilla%20Public%20License%202.0-green)';
-    title.append(badgeDisplay);
-    license.append(licenseText);
-  } if (badge === 'Boost Software License 1.0') {
-    let badgeDisplay = '![badge](https://img.shields.io/badge/license-Boost%20Software%20License%201.0-green';
-    title.append(badgeDisplay);
-    license.append(licenseText);
-  } if (badge === 'The Unlicense') {
-    let badgeDisplay = '![badge](https://img.shields.io/badge/license-The%20Unlicense-green';
-    title.append(badgeDisplay);
-    license.append(licenseText);
-  };
-
-  // creating github profile link from github username and appending it to the Questions section
-  var githubLink = `![GitHub Profile](https://github.com/${username})`;
-  questions.append(githubLink);
-
-  // adding email address link to Question section
-  var email = `![Contact Me](mailto:${email})`;
-  var contactMe = `Feel free to email me with any questions about how to use this application.`
-  questions.append(email);
-  questions.append(contactMe);
-
-
-
-
-
-
-  // User inputs: 
-  // title input - needs to go to top of page
-  // description, installation instructions, usage information, contribution guidelines, and test instructions inputs -- need to be added to the Description, Installation, Usage, Contributing, and Tests sections
-  // license options inputs
-  // license badge needs to be added to top of page
-  // license description needs to be added to license section
-  // GitHub username input -- needs to be added to the Questions section with link to GitHub profile
-  // `https://github.com/${username}`
-  // email address input -- needs to be added to Questions section with instructions on how to reach me with additional questions
-
-  // Table of contents need to link to corresponding sections
-
-
-}
+    # Description
+    ${description}
+    # Installation
+    ${installInstructions}
+    # Usage
+    ${usageInfo}
+    # License
+    This project is subject to the protections of the ${license}.
+    # Contributing
+    ${contributeGuide}
+    # Tests
+    ${testInstruct}
+    # Questions
+    [GitHub Profile](https://github.com/${githubUsername})
+    Feel free to email me with any questions about how to use this application.
+    [Contact Me](mailto:${email})`
 
 // TODO: Create a function to initialize app
-function init() { }
+function init() {
+  inquirer
+    .prompt([
+      {
+        type: 'input',
+        message: 'What is your project title?',
+        name: 'Title',
+      },
+      {
+        type: 'input',
+        message: 'What is your project description?',
+        name: 'description',
+      },
+      {
+        type: 'input',
+        message: 'What are the installation instructions?',
+        name: 'installInstructions',
+      },
+      {
+        type: 'input',
+        message: 'What is the usage information?"',
+        name: 'usageInfo',
+      },
+      {
+        type: 'input',
+        message: 'What are the contribution guidelines?',
+        name: 'contributeGuide',
+      },
+      {
+        type: 'input',
+        message: 'What are the test instructions?',
+        name: 'testInstruct',
+      },
+      {
+        type: 'rawlist',
+        message: 'Which license do you need?',
+        choices: ['MIT', 'GNUAGPLv3', 'GNUGPLv3', 'GNULGPLv3', 'Mozilla', 'Apache', 'Boost',],
+        name: 'license',
+      },
+      {
+        type: 'input',
+        message: 'What is your GitHub username?',
+        name: 'githubUsername',
+      },
+      {
+        type: 'input',
+        message: 'What is your email address?',
+        name: 'email',
+      },
+    ])
+
+    .then((response) => {
+      const readmeTxt = writeToFile(response);
+
+      fs.writeFile('readmeOutput.md', readmeTxt, (err) =>
+          err ? console.error(err) : console.log('Success!')
+        );
+    });
+}
 
 // Function call to initialize app
 init();
