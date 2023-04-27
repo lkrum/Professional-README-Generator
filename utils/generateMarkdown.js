@@ -17,13 +17,13 @@ function generateMarkdown(data) {
 ${renderLicenseBadge(data.license)}
 
 ## Table of Contents
-1.[Description](#description)
-2.[Installation](#installation)
-3.[Usage](#usage)
-4.[License](#license)
-5.[Contributing](#contributing)
-6.[Tests](#tests)
-7.[Questions](#questions)
+1. [Description](#description)
+2. [Installation](#installation)
+3. [Usage](#usage)
+4. [License](#license)
+5. [Contributing](#contributing)
+6. [Tests](#tests)
+7. [Questions](#questions)
 
 ## Description
 ${data.description}
@@ -35,7 +35,7 @@ ${data.installInstructions}
 ${data.usageInfo}
 
 ## License
-This project is subject to the protections of the ${data.license} license.
+This project is subject to the protections of the ${data.license} license. Click on the license badge at the top of the page for more details about the license specifications.
 
 ## Contributing
 ${data.contributeGuide}
@@ -45,8 +45,10 @@ ${data.testInstruct}
 
 ## Questions
 [GitHub Profile](https://github.com/${data.githubUsername})
+
+[Email](mailto:${data.email})
+
 Feel free to email me with any questions about how to use this application.
-[Contact Me](mailto:${data.email})
 `;
 }
 

@@ -4,7 +4,10 @@
 ## Description
 As someone who has spent 8+ years in writing and editing fields, I can tell you that writing isn't always easy. I've created a README generator that developers can use to create professional-looking READMEs for their applications. The generated README includes sections for a table of contents, a description, installation instructions, usage instructions, license information, contribution guidelines, test instructions, and questions for how to contact the user.
 
-Link to video demo:
+Link to video demo: https://drive.google.com/file/d/1kQ4ezE7gDXFmz2yih1ZomxptDS4UxGzq/view?usp=sharing
+
+
+![Preview image](./assets/preview.png)
 
 ## Installation
 1. Copy the SSH key in my GitHub repo and paste `git clone <SSHKEY>` in your terminal to create a local copy on your computer\
@@ -17,7 +20,9 @@ OR
 1. Open the index.js file in your terminal
 2. Make sure you have the starter code installed
 3. Run `node index.js` to start the application 
-4. Answer the questions and use the generated README in your next project
+4. Type in answers to the questions and use the arrow keys to select answer options when applicable
+5. Once you answer the final question, a markdown document called readmeOutput will be created
+6. Save the file as README to use in your future projects
 
 ## Credits 
 - [Inquirer Package](https://www.npmjs.com/package/inquirer/v/8.2.4)
