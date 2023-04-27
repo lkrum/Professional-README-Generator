@@ -58,9 +58,9 @@ function init() {
     .then((data) => {
       const readmeTxt = generateMarkdown(data);
       generateMarkdown(data);
-
+// node writeFile method to create a markdown file using the generateMarkdown function
       fs.writeFile('readmeOutput.md', readmeTxt, (err) =>
-          err ? console.error(err) : console.log('Success!')
+          err ? console.error(err) : console.log('Success! You have a README!')
         );
     });
 }
