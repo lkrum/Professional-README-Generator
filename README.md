@@ -6,6 +6,8 @@ As someone who has spent 8+ years in writing and editing fields, I can tell you 
 
 Link to video demo: https://drive.google.com/file/d/1kQ4ezE7gDXFmz2yih1ZomxptDS4UxGzq/view?usp=sharing
 
+Link to sample readme: [Sample](readmeOutput.md) 
+
 
 ![Preview image](./assets/preview.png)
 
